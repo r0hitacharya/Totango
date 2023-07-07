@@ -1,5 +1,5 @@
 # Totango
-A guide to Totango (Clinet Success Platform) API calls, demonstrating usage, responses, and integration strategies. Covers everything from authentication to event triggers. Ideal for developers leveraging Totango's functionalities
+A guide to Totango (Client Success Platform) API calls, demonstrating usage, responses, and integration strategies. Covers everything from authentication to event triggers. Ideal for developers leveraging Totango's functionalities
 
 ## List
 
