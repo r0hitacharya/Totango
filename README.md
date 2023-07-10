@@ -3,18 +3,18 @@ A guide to Totango (Client Success Platform) API calls, demonstrating usage, res
 
 ## List
 
-**Totango User List :** 
+:bookmark: **Totango User List :** 
 
 This script fetches user data from the Totango API in a paginated manner, cleans the data and finally consolidates the data into a DataFrame for further analysis or usage.
 
-**Totango Audit Log API Call :** 
+:bookmark: **Totango Audit Log API Call :** 
 
 This script interacts with the Totango Audit Log API. It fetches user adoption data based on a specified date range (start and end dates), cleans the received data, and finally consolidates it into a DataFrame for further analysis or usage. The script is easily customizable allowing for data retrieval for any given time period, making it a versatile tool for user adoption data analysis.
 
-**Totango_API_CSV_Data_Integration :**
+:bookmark: **Totango_API_CSV_Data_Integration :**
 
 This script automates the process of uploading data to Totango from a CSV file by triggering an API endpoint. It allows immediate data upload to Totango post data-preparation, thereby increasing efficiency and reducing manual work. 
 
-**Automated Extraction of SuccessPlay Stats via API :**
+:bookmark: **Automated Extraction of SuccessPlay Stats via API :**
 
 This script is designed to automate the extraction of SuccessPlay statistics from Totango, utilizing the tasks/export API. The key feature is the conversion of manual data extraction process from the UI into an automated script-based approach.
