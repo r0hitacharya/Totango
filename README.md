@@ -14,3 +14,7 @@ This script interacts with the Totango Audit Log API. It fetches user adoption d
 **Totango_API_CSV_Data_Integration :**
 
 This script automates the process of uploading data to Totango from a CSV file by triggering an API endpoint. It allows immediate data upload to Totango post data-preparation, thereby increasing efficiency and reducing manual work. 
+
+**Automated Extraction of SuccessPlay Stats via API :**
+
+This script is designed to automate the extraction of SuccessPlay statistics from Totango, utilizing the tasks/export API. The key feature is the conversion of manual data extraction process from the UI into an automated script-based approach.
