@@ -18,3 +18,7 @@ This script automates the process of uploading data to Totango from a CSV file b
 :bookmark: **Automated Extraction of SuccessPlay Stats via API :**
 
 This script is designed to automate the extraction of SuccessPlay statistics from Totango, utilizing the tasks/export API. The key feature is the conversion of manual data extraction process from the UI into an automated script-based approach.
+
+:bookmark: **Totango_SFTP_Joblog_API :**
+
+This script extracts detailed information on the integrations of all SFTP and non-SFTP data jobs running on Totango. It aids in building a dashboard to monitor daily load statuses and triggers remedial actions in case of job failures.
