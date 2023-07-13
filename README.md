@@ -22,3 +22,8 @@ This script is designed to automate the extraction of SuccessPlay statistics fro
 :bookmark: **Totango_SFTP_Joblog_API :**
 
 This script extracts detailed information on the integrations of all SFTP and non-SFTP data jobs running on Totango. It aids in building a dashboard to monitor daily load statuses and triggers remedial actions in case of job failures.
+
+:bookmark: **Totango Touchpoints API:**
+
+This script is designed to interact with the [Touchpoints API](https://support.totango.com/hc/en-us/articles/115000597266-Touchpoints-API) and aims to backup all touchpoints, notes, and alerts for all clients in a systematic and automated way. It forms a critical part of a broader monitoring system and is essential in facilitating data analysis and insights.
+
