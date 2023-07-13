@@ -27,3 +27,8 @@ This script extracts detailed information on the integrations of all SFTP and no
 
 This script is designed to interact with the [Touchpoints API](https://support.totango.com/hc/en-us/articles/115000597266-Touchpoints-API) and aims to backup all touchpoints, notes, and alerts for all clients in a systematic and automated way. It forms a critical part of a broader monitoring system and is essential in facilitating data analysis and insights.
 
+:bookmark: **Totango Attribute Modifier :**
+
+This script is a tool for efficient and precise modification of attributes in Totango. It defines a JSON structure detailing the attributes to be modified for a specified ID, typically a client ID in Totango. Utilizing the Totango Account API from the Integration Hub, the script updates the user attributes and returns a batch ID for reference and verification.
+
+
