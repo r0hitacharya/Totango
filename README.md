@@ -31,4 +31,6 @@ This script is designed to interact with the [Touchpoints API](https://support.t
 
 This script is a tool for efficient and precise modification of attributes in Totango. It defines a JSON structure detailing the attributes to be modified for a specified ID, typically a client ID in Totango. Utilizing the Totango Account API from the Integration Hub, the script updates the user attributes and returns a batch ID for reference and verification.
 
+:bookmark: **Totango User Retirement Automator :** 
 
+This utility script uses the Totango's OAuth2/API/v1/token to obtain a temporary administrative token and leverages the SCIM service at 'https://api.totango.com/api/v2/scim/services/25342' to decommission user accounts in Totango. Note that SCIM should be enabled in the administration section of Totango for the script to function correctly. The script is especially beneficial for multinational corporations as it can handle the deactivation of numerous user accounts simultaneously. More details can be found in the official Totango documentation [here](https://support.totango.com/hc/en-us/articles/360021860392-Manage-Totango-users).
