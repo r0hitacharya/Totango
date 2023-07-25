@@ -34,3 +34,8 @@ This script is a tool for efficient and precise modification of attributes in To
 :bookmark: **Totango User Retirement Automator :** 
 
 This utility script uses the Totango's OAuth2/API/v1/token to obtain a temporary administrative token and leverages the SCIM service to decommission user accounts in Totango. Note that SCIM should be enabled in the administration section of Totango for the script to function correctly. The script is especially beneficial for multinational corporations as it can handle the deactivation of numerous user accounts simultaneously based on a criteria. More details can be found in the official Totango documentation [here](https://support.totango.com/hc/en-us/articles/360021860392-Manage-Totango-users).
+
+:bookmark: **Totango Segment Exporter :**
+
+The is designed to fetch and handle segment data from Totango using specific API endpoints. It provides functionality to extract both User and Account Segments data from Totango and structures it for further analysis. It fetches JSON data, identifies the encapsulated `selected_fields` column, unpacks it, and divides the data into distinctive columns for more manageable data manipulation. This script is an essential tool for those who need to automate the process of extracting and transforming Totango segment data for downstream tasks.
+
