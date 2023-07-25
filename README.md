@@ -39,3 +39,8 @@ This utility script uses the Totango's OAuth2/API/v1/token to obtain a temporary
 
 The is designed to fetch and handle segment data from Totango using specific API endpoints. It provides functionality to extract both User and Account Segments data from Totango and structures it for further analysis. It fetches JSON data, identifies the encapsulated `selected_fields` column, unpacks it, and divides the data into distinctive columns for more manageable data manipulation. This script is an essential tool for those who need to automate the process of extracting and transforming Totango segment data for downstream tasks.
 
+## Need Help with Totango API or Data Architecture?
+
+Reach me [here](mailto:rohit.acharyar@gmail.com) for assistance or [open an issue](https://github.com/yourusername/yourrepository/issues) for specific queries. Happy to help!
+
+
