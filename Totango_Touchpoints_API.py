@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 # # Summary
 # 
 # The script taps into the Totango Touchpoints API (documentation available [here](https://support.totango.com/hc/en-us/articles/115000597266-Touchpoints-API))  to archive all touchpoints, notes, and alerts. It starts with obtaining a full client list, then sequentially queries the Touchpoints API for each client to collect associated touchpoints. Post data gathering, basic data cleaning is performed for the readiness of the data for subsequent operations or backup.
@@ -18,23 +15,11 @@
 # 5. Aids in the process of backing up crucial client interaction data.
 
 # # Libraries
-
-# In[1]:
-
-
 import datetime
 import json
 import pandas as pd
 import requests
 from pandas.io.json import json_normalize
-import pyodbc
-import sqlalchemy as db
-from sqlalchemy import event
-import sqlalchemy
-
-
-# In[2]:
-
 
 #the autherization token needs to be obtained from totango and passed in the header
 headers = {
@@ -42,15 +27,11 @@ headers = {
     'ENTER YOUR TOKEN HERE',
 }
 
-
 # # Fetching Client List of the Totango Instance
 
 # In this code block, we're going through a range of numbers from 0 to 15000 (Depends on the n, increasing by 1000 at each step. At each step, we're creating a new query with the current offset being the number i. This query is then sent to a URL via a POST request. We get the JSON response
 # 
 # The use of an f-string in this case helps to inject the value of i directly into the string, making it more readable and efficient than string concatenation.
-
-# In[3]:
-
 
 clientlist = pd.DataFrame()
 for i in range(0, 16000, 1000):
@@ -68,7 +49,6 @@ for i in range(0, 16000, 1000):
     
 print("Total Number of Clients Found in Totango", len(clientlist))
 
-
 # # Fetching Touchpoints
 
 # This code block performs the following steps:
@@ -83,9 +63,6 @@ print("Total Number of Clients Found in Totango", len(clientlist))
 # 
 # 5. Drops all rows in the initialized DataFrame df_ using the drop() function. This is done to ensure that the DataFrame is empty and clean for subsequent use.
 
-# In[7]:
-
-
 #initialize an empty dataframe to hold the touchpoints data
 payload = {'account_id':clientlist.name.iloc[0]}
 response = requests.get(
@@ -96,10 +73,6 @@ catcherframework = pd.json_normalize(catcherframework)
 df_ = pd.DataFrame()
 #need to clean the initialized df hence the df is dropped to remove multiple NaN rows
 df_.drop(df_.index, inplace=True)
-
-
-# In[19]:
-
 
 # time.sleep(65) 
 # Loop over the range from 0 to the length of the clientlist minus 11610
@@ -127,11 +100,7 @@ for i in range(0, len(clientlist)-1):
         print ("JSON Parsing error detected")
         continue
 
-
 # # Data Cleaning
-
-# In[11]:
-
 
 # The following line converts the timestamp from Totango (which is in Unix time format) to Excel's timestamp.
 # This is achieved by adding the date difference between Unix Epoch (1970-01-01) and Excel's zero date (1900-01-01, which is 25569 days) 
@@ -145,10 +114,6 @@ df_['date'] = pd.TimedeltaIndex(df_.exceldate-1, unit='d') + datetime.datetime(1
 
 # This line extracts only the date part of the datetime object (removing the time component)
 df_.date = df_.date.dt.date
-
-
-# In[12]:
-
 
 #renaming totango field names into a shortened clear name without spaces
 df_.rename(columns={
@@ -198,11 +163,6 @@ df_.rename(columns={
     'task_content.due_date.prev':'task_due_date_prev'   
 },inplace=True)
 
-
-# In[16]:
-
-
 #adding refreshed date column
 df_['refreshed_date']=pd.to_datetime('today')
 df_['refreshed_date']=df_['refreshed_date'].dt.date
-
