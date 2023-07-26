@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 # # Totango SuccessPlay Data Extraction
 # 
 # ## Summary
@@ -20,43 +17,32 @@
 
 # # Libraries
 
-# In[1]:
-
-
 import csv
 import datetime
 import io
 import json
 import pandas as pd
 import requests
-import sqlalchemy
 from pandas.io.json import json_normalize
-from sqlalchemy import event
-import pyodbc
-import sqlalchemy as db
+
 
 
 # # API Calls
 
-# In[2]:
-
-
 #the autherization token needs to be obtained from totango and passed in the header
 headers = {
     'app-token':
-    'd993936ceaf0b573e1319e8add89f1f7c47467a8rohit.acharya@global.ntt',
+    'PUT YOUR TOKEN HERE',
 }
-
-
-# In[10]:
 
 
 # This API call retrieves the data from the Totango service.
 # It queries for tasks with specific 'automation_id' values, and orders the output by 'automation_id'.
 # It also specifies the fields (columns) to be included in the output CSV file.
+#  The URL below can be obtained when you click the export button in the browser, we need to grab the URL quickly from the URL bar
 
 data = requests.get(
-    'https://app.totango.com/api/v3/tasks/export/csv?query={%22automation_id%22:[%22ec14ee5a-1199-429d-8993-8d00387a93ac%22,%22a08873d9-55bc-494d-bf79-6d88078913fc%22,%22aa905794-b48a-43e8-81ff-1fab2c4429e8%22,%225d7a6802-efd9-48d0-a329-68a3d623a5b7%22,%2276c2b0a5-66e7-44c3-9c5c-756da34ff927%22,%22045e9c27-cb71-44fe-b0dc-55ed5df1bef0%22,%22b25ccfe0-366b-4508-bf8a-7f7fa90de2cd%22],%22orderBy%22:%22automation_id%22}&fields=[{%22value%22:%22name%22,%22label%22:%22Success%20Play%22},{%22value%22:%22title%22,%22label%22:%22Task%20Title%22},{%22value%22:%22description%22,%22label%22:%22Task%20Description%22},{%22value%22:%22account_display_name%22,%22label%22:%22Account%20Name%22},{%22value%22:%22account_id%22,%22label%22:%22Account%20ID%22},{%22value%22:%22parent_id%22,%22label%22:%22Parent%20Account%20ID%22},{%22value%22:%22status%22,%22label%22:%22Status%22},{%22value%22:%22assignee%22,%22label%22:%22Assigned%20To%22},{%22value%22:%22assigner%22,%22label%22:%22Assigned%20By%22},{%22value%22:%22priority%22,%22label%22:%22Priority%22},{%22value%22:%22create_date%22,%22label%22:%22Date%20Created%22},{%22value%22:%22completed_date%22,%22label%22:%22Date%20Completed%22},{%22value%22:%22due_date%22,%22label%22:%22Due%20Date%22}]&fileName=SuccessPlays',
+    'https://app.totango.com/api/v3/tasks/export/csv?query={%22automation_id%22:[%22ab12cd3e-1234-567f-8999-8d00387a93ac%22,%22a08873d9-55bc-494d-bf79-6d88078913fc%22,%22aa905794-b48a-43e8-81ff-1fab2c4429e8%22,%225d7a6802-efd9-48d0-a329-68a3d623a5b7%22,%2276c2b0a5-66e7-44c3-9c5c-756da34ff927%22,%22045e9c27-cb71-44fe-b0dc-55ed5df1bef0%22,%22b25ccfe0-366b-4508-bf8a-7f7fa90de2cd%22],%22orderBy%22:%22automation_id%22}&fields=[{%22value%22:%22name%22,%22label%22:%22Success%20Play%22},{%22value%22:%22title%22,%22label%22:%22Task%20Title%22},{%22value%22:%22description%22,%22label%22:%22Task%20Description%22},{%22value%22:%22account_display_name%22,%22label%22:%22Account%20Name%22},{%22value%22:%22account_id%22,%22label%22:%22Account%20ID%22},{%22value%22:%22parent_id%22,%22label%22:%22Parent%20Account%20ID%22},{%22value%22:%22status%22,%22label%22:%22Status%22},{%22value%22:%22assignee%22,%22label%22:%22Assigned%20To%22},{%22value%22:%22assigner%22,%22label%22:%22Assigned%20By%22},{%22value%22:%22priority%22,%22label%22:%22Priority%22},{%22value%22:%22create_date%22,%22label%22:%22Date%20Created%22},{%22value%22:%22completed_date%22,%22label%22:%22Date%20Completed%22},{%22value%22:%22due_date%22,%22label%22:%22Due%20Date%22}]&fileName=SuccessPlays',
     headers=headers)
 
 # The response from the API call is a string representing a CSV file.
@@ -77,15 +63,9 @@ call_two = pd.read_csv(io.StringIO(data.text))
 
 # ## All Successplays
 
-# In[11]:
-
-
 #Successplays needs to be sourced from different groups in totango which can be concatenated in this step
 successplays = pd.concat([call_one, call_two], sort=False, ignore_index=True)
 print("Concatenation of Successplays from all regions Finished")
-
-
-# In[12]:
 
 
 #This is the sample list of all columns available in a successplay data dump
@@ -93,8 +73,6 @@ print(successplays.columns.tolist())
 
 
 # # Rename and Assign proper data types
-
-# In[7]:
 
 
 #rename columns to remove space in between column names
@@ -113,9 +91,6 @@ successplays.rename(columns={
  'Due Date':'due_date',
  'Task Title':'task_title'
 },inplace=True)
-
-
-# In[8]:
 
 
 # Remove rows from the 'successplays' DataFrame where 'due_date' is 'Invalid date'
@@ -142,4 +117,3 @@ successplays['refreshed_date'] = successplays['refreshed_date'].dt.date
 successplays.to_csv(
      'Successplays.csv',index=False
 )
-
