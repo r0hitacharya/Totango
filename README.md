@@ -7,7 +7,7 @@ A guide to Totango (Client Success Platform) API calls, demonstrating usage, res
 
 This script fetches user data from the Totango API in a paginated manner, cleans the data and finally consolidates the data into a DataFrame for further analysis or usage.
 
-:bookmark: Totango SuccessPlay Data Extraction
+:bookmark: **Totango SuccessPlay Data Extraction :**
 
 This script automates the extraction of SuccessPlay statistics from Totango, utilizing the app.totango.com/api/v3/tasks/export/csv?query API. The key feature is the conversion of manual data extraction process from the UI into an automated script-based approach.
 
